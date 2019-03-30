@@ -14,6 +14,7 @@ $name=$row['name'];
 $district=$row['district'];
 $constituency=$row['constituency'];
 $is_voted=$row['is_voted'];
+$picture=$row['picture'];
 }
 }
 else
@@ -84,7 +85,7 @@ if($verify){
 	<div class="row">
 		<div class="col-md-3">
 			<div id="details">
-				<img src="./images/pic.jpeg" style="width:100%">
+				<img src="./images/<?php echo $picture;?>" style="width:100%">
 				<hr>
 				<?php
 					if($is_voted=='false'){
