@@ -84,10 +84,10 @@ App = {
           var id = candidate[0];
           var name = candidate[1];
           var voteCount = candidate[2];
-
+          var symbol=candidate[3];
           // Render candidate Result
           // var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td></tr>"
-          var candidateTemplate = '<div class="col-md-3"><img src="./images/pic.jpeg" style="width:100%"><b">'+ name+'</b><hr></div>';
+          var candidateTemplate = '<div class="col-md-3"><img src="'+symbol+'" style="width:100%"><b">'+ name+'</b><hr></div>';
           candidatesResults.append(candidateTemplate);
 
           // Render candidate ballot option

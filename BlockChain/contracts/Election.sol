@@ -6,6 +6,7 @@ contract Election {
         uint id;
         string name;
         uint voteCount;
+        string symbol;
     }
 
     // Store accounts that have voted
@@ -22,15 +23,17 @@ contract Election {
     );
 
     constructor () public {
-        addCandidate("Vignesh");
-        addCandidate("Lachu");
-        addCandidate("Venkatesh");
-        addCandidate("SaranrajShri");
+        addCandidate("Vignesh","../images/candidate1.jpeg");
+        addCandidate("Lachu","../images/candidate2.jpeg");
+        addCandidate("Venkatesh","../images/candidate3.jpeg");
+        // addCandidate("Lachu");
+        // addCandidate("Venkatesh");
+        // addCandidate("SaranrajShri");
     }
 
-    function addCandidate (string _name) private {
+    function addCandidate (string _name,string _symbol) private {
         candidatesCount ++;
-        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0,_symbol);
     }
 
     function vote (uint _candidateId) public {
