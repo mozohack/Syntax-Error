@@ -87,7 +87,7 @@ App = {
 
           // Render candidate Result
           // var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td></tr>"
-          var candidateTemplate = '<div class="col-md-3"><img src="./images/pic.jpeg" style="width:100%"><b>'+ name+'</b></div>';
+          var candidateTemplate = '<div class="col-md-3"><img src="./images/pic.jpeg" style="width:100%"><b">'+ name+'</b><hr></div>';
           candidatesResults.append(candidateTemplate);
 
           // Render candidate ballot option

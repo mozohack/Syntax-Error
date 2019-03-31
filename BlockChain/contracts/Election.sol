@@ -22,9 +22,10 @@ contract Election {
     );
 
     constructor () public {
-        addCandidate("Vicky Rockzz");
-        addCandidate("Lachu ThaniOruvan");
-        addCandidate("Engineer No 221");
+        addCandidate("Vignesh");
+        addCandidate("Lachu");
+        addCandidate("Venkatesh");
+        addCandidate("SaranrajShri");
     }
 
     function addCandidate (string _name) private {
