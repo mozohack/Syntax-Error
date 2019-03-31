@@ -81,14 +81,15 @@ if ($user==""){
   $reject=@$_POST['reject'];
   if($verify){
     mysql_query("UPDATE users SET ver_status='verified' WHERE id='$user_id'");
-    // header("location:sendsms.php");
     echo'
       <script>alert("verified")</script>
     ';
+    header("location:verifyusers.php");
   }
   if($reject){
     mysql_query("UPDATE users SET ver_status='' WHERE id='$user_id'");
     echo'<script>alert("rejected");</script>';
+    header("location:verifyusers.php");
   }
   ?>
   <div class="col-md-3">
