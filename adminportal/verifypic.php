@@ -82,14 +82,18 @@ if ($user==""){
   if($verify){
     mysql_query("UPDATE users SET ver_status='verified' WHERE id='$user_id'");
     echo'
-      <script>alert("verified")</script>
+      <script>alert("verified");
+      window.location.replace("http://localhost/BlockChain-verification/adminportal/admin-dashboard.php");
+      </script>
     ';
-    header("location:verifyusers.php");
+    // header("location:verifyusers.php");
   }
   if($reject){
     mysql_query("UPDATE users SET ver_status='' WHERE id='$user_id'");
-    echo'<script>alert("rejected");</script>';
-    header("location:verifyusers.php");
+    echo'<script>alert("rejected");
+window.location.replace("http://localhost/BlockChain-verification/adminportal/admin-dashboard.php");
+    </script>';
+    // header("location:verifyusers.php");
   }
   ?>
   <div class="col-md-3">
