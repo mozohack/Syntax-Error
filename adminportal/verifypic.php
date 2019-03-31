@@ -36,10 +36,10 @@ if ($user==""){
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="admin-dashboard.php">Show Results <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="admin-dashboard.php">Show Results </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="verifyusers.php">Verify</a>
+        <a class="nav-link" href="verifyusers.php">Verify <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../logout.php">Logout</a>
@@ -48,7 +48,58 @@ if ($user==""){
   </div>
 </nav>
 <div class="container" style="margin-top:20px;">
-  <center><iframe src="http://localhost:3000/results.html" height="500" width="1000" style=""></iframe></center>
+  <?php 
+  $user_id=$_GET['id'];
+  $sql=mysql_query("SELECT * FROM users WHERE id='$user_id'");
+    while($row=mysql_fetch_array($sql)){
+      $id=$row['id'];
+      $aadhar_id=$row['aadhar_id'];
+      $voter_id=$row['voter_id'];
+      $name=$row['name'];
+      $picture=$row['picture'];
+      $verpic=$row['ver_pic'];
+
+      echo'
+      <div class="row">
+        <div class="col-md-3">
+        <h2  class="display-4" style="font-size:30px">Picture In Database</h2>
+        <hr>
+          <img src="../images/'.$picture.'" style="width:100%">
+        </div>
+        <div class="col-md-3">
+         <h2 class="display-4" style="font-size:30px">Current Picture</h2>
+         <hr>
+          <img src="../uploads/'.$verpic.'" style="width:100%">
+        </div>
+        
+      ';
+    }
+
+  ?>
+  <?php
+  $verify=@$_POST['verify'];
+  $reject=@$_POST['reject'];
+  if($verify){
+    mysql_query("UPDATE users SET ver_status='verified' WHERE id='$user_id'");
+    // header("location:sendsms.php");
+    echo'
+      <script>alert("verified")</script>
+    ';
+  }
+  if($reject){
+    mysql_query("UPDATE users SET ver_status='' WHERE id='$user_id'");
+    echo'<script>alert("rejected");</script>';
+  }
+  ?>
+  <div class="col-md-3">
+    <form action="#" method="post">
+    <input type="submit" name="verify" class="btn btn-success" value="Verify">
+    <input type="submit" name="reject" class="btn btn-danger" value="Reject">
+    </form>
+  </div>
+</div>
+</table>
+  <!-- <center><iframe src="http://localhost:3000/results.html" height="500" width="1000" style=""></iframe></center> -->
 </div>
 </body>
 </html>

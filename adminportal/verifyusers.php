@@ -36,10 +36,10 @@ if ($user==""){
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="admin-dashboard.php">Show Results <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="admin-dashboard.php">Show Results </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="verifyusers.php">Verify</a>
+        <a class="nav-link" href="verifyusers.php">Verify <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../logout.php">Logout</a>
@@ -48,7 +48,39 @@ if ($user==""){
   </div>
 </nav>
 <div class="container" style="margin-top:20px;">
-  <center><iframe src="http://localhost:3000/results.html" height="500" width="1000" style=""></iframe></center>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Aadhar ID</th>
+      <th scope="col">Voter ID</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php 
+    $sql=mysql_query("SELECT * FROM users WHERE ver_status='waiting'");
+    while($row=mysql_fetch_array($sql)){
+      $id=$row['id'];
+      $aadhar_id=$row['aadhar_id'];
+      $voter_id=$row['voter_id'];
+      $name=$row['name'];
+
+      echo'
+        <tr>
+          <th>'.$id.'</th>
+          <th>'.$name.'</th>
+          <th>'.$aadhar_id.'</th>
+          <th>'.$voter_id.'</th>
+          <th><a href="verifypic.php?id='.$id.'">Verify</a></th>
+        </tr>
+        ';      
+    }
+    ?>
+  </tbody>
+</table>
+  <!-- <center><iframe src="http://localhost:3000/results.html" height="500" width="1000" style=""></iframe></center> -->
 </div>
 </body>
 </html>

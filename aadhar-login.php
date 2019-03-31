@@ -60,7 +60,7 @@ if($_POST){
 
 </head>
 <body class="text-center">
-  <div class="container" style="margin-left:200px;">
+  <div class="container" style="margin-left:250px;">
     <form class="form-signin" action="#" method="POST">
       <h1 class="h3 mb-3 font-weight-normal">Voter Login</h1><hr>
       <label for="inputEmail" class="sr-only">Enter Your Aadhar Number</label>

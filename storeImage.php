@@ -1,4 +1,6 @@
 <?php
+    include("./includes/connect.inc.php");
+
     $img = $_POST['image'];
     $folderPath = "uploads/";
   
@@ -12,7 +14,12 @@
     $file = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
     
-    header("location:http://localhost:3000")  
+    // header("location:http://localhost:3000")  
     
-  
+    $user_id=$_GET['profile_id'];
+
+    mysql_query("UPDATE users SET ver_pic='$fileName',ver_status='waiting' WHERE id='$user_id'");
+    header("location:waiting.php");
+
+
 ?>

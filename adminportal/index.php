@@ -19,7 +19,7 @@ while($row=mysql_fetch_array($sql)) {
 $id=$row["id"];
 }
 $_SESSION["user_login"]=$user_login;
-header("location:admin-dashboard.php?profile_id=$id");
+header("location:verifyusers.php?profile_id=$id");
 exit();
 }
 else

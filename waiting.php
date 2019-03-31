@@ -22,9 +22,6 @@ else
 {
 $user="";
 }
-if($ver_status=='verified'){
-  header("location:waiting.php?profile_id=$user");
-}
 if ($user==""){
   die("ERROR");
 }
@@ -54,6 +51,7 @@ if($verify){
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -86,20 +84,25 @@ if($verify){
   </div>
 </nav>
 <div class="container" style="margin-top:20px">
+  <?php
+          if($ver_status=='waiting'){
+            echo '<p style="color:red">Waiting For Verification....Please Wait.</p>';
+          }
+          else{
+            echo'<p style="color:green"><span class="fa fa-check-circle"></span> You Are Verified.Now Proceed To Vote</p>';
+          }
+          ?>
 	<div class="row">
 		<div class="col-md-3">
 			<div id="details">
 				<img src="./images/<?php echo $picture;?>" style="width:100%">
 				<hr>
 				<?php
-					if($ver_status==''){
-						echo '<button class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">Procced To Verification</button>';
+					if($ver_status=='waiting'){
+						echo '<button class="btn btn-danger btn-block" disabled data-toggle="modal" data-target="#exampleModal">Waiting For Verification</button>';
 					}
-          else if($ver_status=='waiting'){
-            echo'<button class="btn btn-danger btn-block" disabled>Waiting For Verification</button>';
-          }
 					else{
-						echo'<button class="btn btn-danger btn-block" disabled>Already Voted</button>';
+						echo'<p style="color:green"><span class="fa fa-check-circle"></span> Verified</p><a href="http://localhost:3000" class="btn btn-success btn-block">Proceed To Vote</a>';
 					}
 				?>
 				
@@ -144,3 +147,6 @@ if($verify){
 </div>
 </body>
 </html>
+<script type="text/javascript">
+  // window.top.location=window.top.location;
+</script>

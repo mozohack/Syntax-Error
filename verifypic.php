@@ -81,7 +81,7 @@ if($verify){
   </div>
 </nav>
 <div class="container" style="margin-top:20px">
-	<form method="POST" action="storeImage.php">
+	<form method="POST" action="storeImage.php?profile_id=<?php echo $user;?>">
       <h1 class="display-4" style="text-align:center;font-size:40px;">Verify Your Picture</h1>
         <hr>
         <div class="row">
